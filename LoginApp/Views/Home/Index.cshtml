@@ -1,0 +1,15 @@
+﻿@using System.Security.Claims;
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @if (User.Identity!.IsAuthenticated)
+    {
+        <h1 class="display-4">Bienvenido
+            @User.Claims.Where(a => a.Type == ClaimTypes.Name).Select(a => a.Value).SingleOrDefault()
+        </h1>
+    }
+    
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
